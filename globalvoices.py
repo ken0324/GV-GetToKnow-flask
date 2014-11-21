@@ -14,7 +14,7 @@ path_lookup = json.loads(f.read())
 
 def recent_stories_from(country):
     '''
-    Return a list of the last 3 stories for a given country
+    Return a list of the last 9 stories for a given country
     '''
     h = HTMLParser.HTMLParser()
     raw_content = urlopen( _content_url_via_google_for( country ) ).read()
@@ -40,7 +40,7 @@ def _content_url_via_google_for(country):
     Return the URL to the RSS content for a country via the Google API, so we can get in JSON directly 
     (rather than in XML)
     '''
-    return "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=3&q="+ urllib.quote( _rss_url_for(country).encode("utf-8") )
+    return "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=9&q="+ urllib.quote( _rss_url_for(country).encode("utf-8") )
 
 def _rss_url_for(country):
     '''
